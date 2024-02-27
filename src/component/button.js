@@ -9,7 +9,6 @@ function Button({ variant }) {
              'bg-red-700 text-white': variant === 'danger',
              'bg-green-700 text-white': variant === 'success', 
              'bg-gray-200 text-black': variant === 'light',
-             'bg-black text-white': variant === 'dark',   
              'bg-orange-700 text-white': variant === 'counter',    
         })}>Button</button>
     </div>

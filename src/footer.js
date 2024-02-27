@@ -3,7 +3,7 @@ import Button from './component/button';
 
 function Footer() {
   return (
-    <div className=' bg-slate-500'>
+    <div >
         <Button text="Button 1" variant="dark"/>
     </div>
   )

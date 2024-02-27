@@ -37,9 +37,9 @@ function Plus() {
 
     return (
         <div>
-            <div>Count: {state.plus}</div>
+            {/* <div>Count: {state.plus}</div>
             <button onClick={() => dispacth({type: 'increment'}) }>Azalt</button>
-            <button onClick={() => dispacth({type: 'decrement'}) }>Arttır</button>
+            <button onClick={() => dispacth({type: 'decrement'}) }>Arttır</button> */}
         </div>
     );
 }
