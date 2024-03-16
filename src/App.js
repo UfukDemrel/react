@@ -18,10 +18,11 @@ function App() {
 
   return (
     <div>
-      <div className="App container">
+      <div className="App">
         <div className='flex items-center justify-between'>
           <div>
-            <NavLink className='p-3' to={'/home'}>Anasayfa</NavLink>
+            <NavLink className='p-3' to={'/'}>Anasayfa</NavLink>
+            <NavLink className='p-3' to={'/work'}>Movie List</NavLink>
             <NavLink to={'/contact'}>Contact</NavLink>
           </div>
           <div className=' cursor-pointer p-3 flex justify-end' onClick={button}>
@@ -34,7 +35,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

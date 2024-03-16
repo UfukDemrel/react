@@ -1,32 +1,56 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import './App.css';
 
-function Home() {
+const initialItems = [
+  { id: 'item-1', content: 'Item 1' },
+  { id: 'item-2', content: 'Item 2' },
+  { id: 'item-3', content: 'Item 3' },
+];
 
-    const [movies, setMovies] = useState([]);
-  
-    useEffect(() => {
-      fetch('https://api.themoviedb.org/3/movie/popular?api_key=3044afc915e1301ae1d9551614db3711&language=en-US&page=1')
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          setMovies(data.results);
-        })
-        .catch(err => console.error(err));
-    }, [])
+const Home = () => {
+  const [items, setItems] = useState(initialItems);
+
+  const onDragEnd = result => {
+    if (!result.destination) return;
+
+    const { source, destination } = result;
+    const newItems = Array.from(items);
+    const [movedItem] = newItems.splice(source.index, 1);
+    newItems.splice(destination.index, 0, movedItem);
+
+    setItems(newItems);
+  };
 
   return (
-    <div>
-        <div className='movie'>
-          {movies.map(movie => (
-            <div id={movie.id} key={movie.id}>
-              {/* <img alt="alt" src={`https://api.themoviedb.org${movie.poster_path}`}/> */}
-              <div>{movie.title}</div>
-            </div>
-          ))}
-        </div>
-    </div>
-  )
-}
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="droppable">
+        {(provided) => (
+          <div
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className="container"
+          >
+            {items.map((item, index) => (
+              <Draggable key={item.id} draggableId={item.id} index={index}>
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    className="item"
+                  >
+                    {item.content}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
+  );
+};
 
-export default Home
+export default Home;

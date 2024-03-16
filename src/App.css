@@ -19,3 +19,46 @@ body.dark{
 .active{
     text-decoration: underline;
 }
+
+.burger{
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.burgers{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.menu{
+    width: calc(25% - 10px);
+    margin-bottom: 1%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.burgers img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.title{
+    margin-top: 1%;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.container {
+    display: flex;
+  }
+  
+  .item {
+    background-color: #f0f0f0;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
